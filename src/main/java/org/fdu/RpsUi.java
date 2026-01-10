@@ -12,6 +12,9 @@ package org.fdu;
 
 public class RpsUi {
 
+    /** empty constructor - utility class - assumed all methods called statically */
+    RpsUi() {    }
+
     /**
      * Writes the provided String to the console.
      * @param message - String to be output to the console
