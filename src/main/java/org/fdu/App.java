@@ -26,42 +26,61 @@ public class App
         RpsUi.uiWriteMessage("Player enter your move: ");
         String userTurn = RPS_SCANNER.nextLine();
 
-        // Generate Computer Turn
-        Random random = new Random();
-        int randomInt = random.nextInt(3);
+        // Check if user wants to play again or exit the game
+        boolean gameManager = true;
+        while(gameManager)
+        {
+            // Generate Computer Turn
+            Random random = new Random();
+            int randomInt = random.nextInt(3);
 
-        // Translate Random Integer to usable computer rps turn
-        String computerTurn = "";
-        switch(randomInt)
-        {
-            case 0:
-                computerTurn = "R";break;
-            case 1:
-                computerTurn = "P"; break;
-            case 2:
-                computerTurn = "S"; break;
+            // Translate Random Integer to usable computer rps turn
+            String computerTurn = "";
+            switch(randomInt)
+            {
+                case 0:
+                    computerTurn = "R";break;
+                case 1:
+                    computerTurn = "P"; break;
+                case 2:
+                    computerTurn = "S"; break;
+            }
+
+            // Show what each player chose
+            RpsUi.uiWriteMessage("User Chose: " + userTurn);
+            RpsUi.uiWriteMessage("Computer Chose: " + computerTurn);
+
+            // Check if there is a tie
+            if(userTurn.equalsIgnoreCase(computerTurn))
+            {
+                RpsUi.uiWriteMessage("It's a tie!\n");
+            }
+            // If there is no tie, Determine Winner
+            else if(userTurn.equalsIgnoreCase("R") && computerTurn.equals("S") ||
+                    userTurn.equalsIgnoreCase("S") && computerTurn.equals("P") ||
+                    userTurn.equalsIgnoreCase("P") && computerTurn.equals("R"))
+            {
+                RpsUi.uiWriteMessage("User wins!\n");
+            }
+            else
+            {
+                RpsUi.uiWriteMessage("Computer Wins!\n");
+            }
+
+            RpsUi.uiWriteMessage("Enter 1 to play again, enter 2 to exit: ");
+            String continueOrEndGame = RPS_SCANNER.nextLine();
+            if(continueOrEndGame.equals("2"))
+            {
+                gameManager = false;
+                RpsUi.uiWriteMessage("Thanks for playing!");
+            }
+            else
+            {
+                RpsUi.uiWriteMessage("Player enter your move: ");
+                userTurn = RPS_SCANNER.nextLine();
+            }
         }
 
-        // Show what each player chose
-        RpsUi.uiWriteMessage("User Chose: " + userTurn);
-        RpsUi.uiWriteMessage("Computer Chose: " + computerTurn);
-
-        // Check if there is a tie
-        if(userTurn.equalsIgnoreCase(computerTurn))
-        {
-            RpsUi.uiWriteMessage("It's a tie!");
-        }
-        // If there is no tie, Determine Winner
-        else if(userTurn.equalsIgnoreCase("R") && computerTurn.equals("S") ||
-                userTurn.equalsIgnoreCase("S") && computerTurn.equals("P") ||
-                userTurn.equalsIgnoreCase("P") && computerTurn.equals("R"))
-        {
-            RpsUi.uiWriteMessage("User wins!");
-        }
-        else
-        {
-            RpsUi.uiWriteMessage("Computer Wins!");
-        }
 
     }
 }
