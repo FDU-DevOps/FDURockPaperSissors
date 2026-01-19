@@ -1,5 +1,6 @@
 package org.fdu;
 import java.util.Scanner;
+import java.util.Random;
 
 
 /**
@@ -20,14 +21,47 @@ public class App
     public static void main( String[] args ) {
         RpsUi.uiWriteMessage( "Welcome to Xavier's RPS Game..." );
         RpsUi.uiWriteMessage( "Enter 'R' for Rock, 'P' for Paper, and 'S' for Scissors...\n" );
-
-
+        // Create Scanner and get user input for turn
         Scanner RPS_SCANNER = new Scanner(System.in);
         RpsUi.uiWriteMessage("Player enter your move: ");
         String userTurn = RPS_SCANNER.nextLine();
 
-        //Testing user input
-        RpsUi.uiWriteMessage("USER INPUT: " + userTurn);
+        // Generate Computer Turn
+        Random random = new Random();
+        int randomInt = random.nextInt(3);
+
+        // Translate Random Integer to usable computer rps turn
+        String computerTurn = "";
+        switch(randomInt)
+        {
+            case 0:
+                computerTurn = "R";break;
+            case 1:
+                computerTurn = "P"; break;
+            case 2:
+                computerTurn = "S"; break;
+        }
+
+        // Show what each player chose
+        RpsUi.uiWriteMessage("User Chose: " + userTurn);
+        RpsUi.uiWriteMessage("Computer Chose: " + computerTurn);
+
+        // Check if there is a tie
+        if(userTurn.equalsIgnoreCase(computerTurn))
+        {
+            RpsUi.uiWriteMessage("It's a tie!");
+        }
+        // If there is no tie, Determine Winner
+        else if(userTurn.equalsIgnoreCase("R") && computerTurn.equals("S") ||
+                userTurn.equalsIgnoreCase("S") && computerTurn.equals("P") ||
+                userTurn.equalsIgnoreCase("P") && computerTurn.equals("R"))
+        {
+            RpsUi.uiWriteMessage("User wins!");
+        }
+        else
+        {
+            RpsUi.uiWriteMessage("Computer Wins!");
+        }
 
     }
 }
