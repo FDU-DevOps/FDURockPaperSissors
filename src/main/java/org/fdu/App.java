@@ -13,9 +13,28 @@ package org.fdu;
  * @since 2026-01-10
  */
 
-public class App 
+
+public class App
 {
+    /// Create a method for checking the outcome of the game, will return 0 for tie, 1 for player win, and 2 for player loss
+    public static int CheckWin(int pc, int cc, int ) {
+        if (pc == cc) {
+            return 0;
+        }
+        if((pc==1 && cc ==3)|| (pc == 2 && cc == 1) || (pc == 3&& cc ==2)) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
+    }
     public static void main( String[] args ) {
-        RpsUi.uiWriteMessage( "Hello World!" );
+        /// Introduce user to rules
+        /// game loop starts
+        /// Have basic input where 1 == rock, 2 == paper, and 3 == scissors
+        /// Randomly generate the computers choice
+        /// output
+        /// Game counter for player wins, computer wins and ties
+
     }
 }
