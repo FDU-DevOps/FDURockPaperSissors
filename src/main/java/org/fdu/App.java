@@ -1,5 +1,5 @@
 package org.fdu;
-
+import java.util.Scanner;
 /**
  * A console-based implementation of the classic Rock Paper Scissors game.
  * This application allows a user to play against a computer opponent using
@@ -17,7 +17,7 @@ package org.fdu;
 public class App
 {
     /// Create a method for checking the outcome of the game, will return 0 for tie, 1 for player win, and 2 for player loss
-    public static int CheckWin(int pc, int cc, int ) {
+    public static int CheckWin(int pc, int cc) {
         if (pc == cc) {
             return 0;
         }
@@ -30,6 +30,10 @@ public class App
     }
     public static void main( String[] args ) {
         /// Introduce user to rules
+        int gameLoop = 1;
+        while (gameLoop == 1) {
+
+        }
         /// game loop starts
         /// Have basic input where 1 == rock, 2 == paper, and 3 == scissors
         /// Randomly generate the computers choice
