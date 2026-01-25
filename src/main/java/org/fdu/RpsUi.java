@@ -26,7 +26,7 @@ public class RpsUi {
     }
 
     /// Read function that utilizes a scanner to get user input (ints)
-    public int uiReadLine(String prompt) {
+    public int uiReadInt(String prompt) {
         uiWriteMessage(prompt);
         return scanner.nextInt();
     }
