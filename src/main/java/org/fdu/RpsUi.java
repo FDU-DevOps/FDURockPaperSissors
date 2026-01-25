@@ -16,7 +16,7 @@ public class RpsUi {
     RpsUi() {    }
 
     /// Default scanner for user input
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     /**
      * Writes the provided String to the console.
      * @param message - String to be output to the console
@@ -26,7 +26,7 @@ public class RpsUi {
     }
 
     /// Read function that utilizes a scanner to get user input (ints)
-    public int uiReadInt(String prompt) {
+    public static int uiReadInt(String prompt) {
         uiWriteMessage(prompt);
         return scanner.nextInt();
     }
