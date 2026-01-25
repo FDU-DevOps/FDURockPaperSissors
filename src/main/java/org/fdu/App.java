@@ -12,7 +12,6 @@ package org.fdu;
  * @since 2026-01-10
  */
 
-
 public class App
 {
     /// Create a method for checking the outcome of the game, will return 0 for tie, 1 for player win, and 2 for player loss
