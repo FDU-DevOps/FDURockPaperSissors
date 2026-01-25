@@ -33,13 +33,31 @@ public class App
     public static void main( String[] args ) {
         /// Introduce user to rules
         RpsUi.uiWriteMessage("Welcome to Rock Paper Scissors!\nHere are the controls:\n");
+        RpsUi.uiWriteMessage("Rock beats scissors, scissors beats paper, and paper beats rock");
+        RpsUi.uiWriteMessage("If you and the computer make the same choice, its a tie!\n");
+
+        /// Game wins counter
+        int playerWin = 0;
+        int totalGames = 0;
+        int ties = 0;
         /// game loop starts. Game will continue running until user selects 2 to quit
 
         int gameLoop = 1;
         while (gameLoop == 1) {
+            /// Enter Game Loop and display current game stats
+            RpsUi.uiWriteMessage("Player Wins: " + playerWin + "       Ties: " + ties +"    Total Games: " + totalGames);
+
+            /// Have basic input where 1 == rock, 2 == paper, and 3 == scissors
             RpsUi.uiWriteMessage("Make your choice...");
             int pc = RpsUi.uiReadInt("Input 1 for rock, two for paper, or 3 for scissors!");
+            while (pc != 1 && pc !=2 && pc !=3) {
+                pc = RpsUi.uiReadInt("Incorrect input, please select 1 or 2");
+            }
+
+            //generate computer choice from range 1-3 inclusive
             int cc = (int)(Math.random() * 3) + 1;
+
+            ///Convert numeric choice into a string for final output message
             String compText;
             String playerText;
             if(pc ==1) {
@@ -64,7 +82,9 @@ public class App
             if(cc ==3) {
                 compText = "scissors";
             }
+            ///Ask player if they would like to play again
             int gameChoice = RpsUi.uiReadInt("Would you like to play again? Select 1 to continue or 2 to quit");
+          /// Verify input
             while (gameChoice != 1 && gameChoice !=2) {
                 gameChoice = RpsUi.uiReadInt("Incorrect input, please select 1 or 2");
             }
@@ -73,7 +93,6 @@ public class App
             }
 
         }
-        /// Have basic input where 1 == rock, 2 == paper, and 3 == scissors
         /// Randomly generate the computers choice
         /// output
         /// Game counter for player wins, computer wins and ties
