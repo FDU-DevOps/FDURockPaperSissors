@@ -39,6 +39,7 @@ public class App
         while (gameLoop == 1) {
             RpsUi.uiWriteMessage("Make your choice...");
             int pc = RpsUi.uiReadInt("Input 1 for rock, two for paper, or 3 for scissors!");
+            int cc = (int)(Math.random() * 3) + 1;
             String compText;
             String playerText;
             if(pc ==1) {
