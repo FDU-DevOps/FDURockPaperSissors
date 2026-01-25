@@ -1,7 +1,4 @@
 package org.fdu;
-import java.util.Scanner;
-import java.util.Random;
-
 /**
  * A console-based implementation of the classic Rock Paper Scissors game.
  * This application allows a user to play against a computer opponent using
@@ -45,21 +42,21 @@ public class App
         int gameLoop = 1;
         while (gameLoop == 1) {
             /// Enter Game Loop and display current game stats
-            RpsUi.uiWriteMessage("Player Wins: " + playerWin + "       Ties: " + ties +"    Total Games: " + totalGames);
+            RpsUi.uiWriteMessage("Player Wins: " + playerWin + "       Ties: " + ties +"      Total Games: " + totalGames + "\n");
 
             /// Have basic input where 1 == rock, 2 == paper, and 3 == scissors
             RpsUi.uiWriteMessage("Make your choice...");
             int pc = RpsUi.uiReadInt("Input 1 for rock, two for paper, or 3 for scissors!");
             while (pc != 1 && pc !=2 && pc !=3) {
-                pc = RpsUi.uiReadInt("Incorrect input, please select 1 or 2");
+                pc = RpsUi.uiReadInt("Invalid input, please select 1 for rock, 2 for paper, or 3 for scissors");
             }
 
             //generate computer choice from range 1-3 inclusive
             int cc = (int)(Math.random() * 3) + 1;
 
             ///Convert numeric choice into a string for final output message
-            String compText;
-            String playerText;
+            String compText = "";
+            String playerText = "";
             if(pc ==1) {
                 playerText = "rock";
             }
@@ -82,7 +79,30 @@ public class App
             if(cc ==3) {
                 compText = "scissors";
             }
-            ///Ask player if they would like to play again
+
+            /// Simulate RPS
+            RpsUi.uiWriteMessage("Rock\nPaper\nScissors\nShoot!\n");
+
+            /// Output player choice and computer choice
+            RpsUi.uiWriteMessage("You chose: " + playerText);
+            RpsUi.uiWriteMessage("Your opponent chose: " + compText + "\n");
+
+            /// Declare winner
+            int outcome = CheckWin(pc,cc);
+            if(outcome == 0) {
+                RpsUi.uiWriteMessage("It's a tie!");
+                ties++;
+            }
+            if(outcome == 1) {
+                RpsUi.uiWriteMessage("You win! :)");
+                playerWin++;
+            }
+            if(outcome==2) {
+                RpsUi.uiWriteMessage("You lose :P");
+
+            }
+            totalGames++;
+                ///Ask player if they would like to play again
             int gameChoice = RpsUi.uiReadInt("Would you like to play again? Select 1 to continue or 2 to quit");
           /// Verify input
             while (gameChoice != 1 && gameChoice !=2) {
@@ -93,9 +113,11 @@ public class App
             }
 
         }
-        /// Randomly generate the computers choice
-        /// output
-        /// Game counter for player wins, computer wins and ties
+        RpsUi.uiWriteMessage("Thank you for playing!");
+        RpsUi.uiWriteMessage("_______Final Score________ \nTotal Wins: " + playerWin + "\nTotal ties: " + ties
+                + "\nTotal Games Played: " + totalGames);
+
+
 
     }
 }
