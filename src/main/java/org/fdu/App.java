@@ -1,5 +1,7 @@
 package org.fdu;
 import java.util.Scanner;
+import java.util.Random;
+
 /**
  * A console-based implementation of the classic Rock Paper Scissors game.
  * This application allows a user to play against a computer opponent using
@@ -31,9 +33,36 @@ public class App
     public static void main( String[] args ) {
         /// Introduce user to rules
         RpsUi.uiWriteMessage("Welcome to Rock Paper Scissors!\nHere are the controls:\n");
+        /// game loop starts. Game will continue running until user selects 2 to quit
+
         int gameLoop = 1;
         while (gameLoop == 1) {
-            RpsUi.uiWriteMessage("Welcome to Rock Paper Scissors!");
+            RpsUi.uiWriteMessage("Make your choice...");
+            int pc = RpsUi.uiReadInt("Input 1 for rock, two for paper, or 3 for scissors!");
+            String compText;
+            String playerText;
+            if(pc ==1) {
+                playerText = "rock";
+            }
+
+            if(pc ==2) {
+                playerText = "paper";
+            }
+
+            if(pc ==3) {
+                playerText = "scissors";
+            }
+            if(cc ==1) {
+                compText = "rock";
+            }
+
+            if(cc ==2) {
+                compText = "paper";
+            }
+
+            if(cc ==3) {
+                compText = "scissors";
+            }
             int gameChoice = RpsUi.uiReadInt("Would you like to play again? Select 1 to continue or 2 to quit");
             while (gameChoice != 1 && gameChoice !=2) {
                 gameChoice = RpsUi.uiReadInt("Incorrect input, please select 1 or 2");
@@ -43,7 +72,6 @@ public class App
             }
 
         }
-        /// game loop starts
         /// Have basic input where 1 == rock, 2 == paper, and 3 == scissors
         /// Randomly generate the computers choice
         /// output
