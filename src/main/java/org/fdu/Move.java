@@ -32,9 +32,10 @@ public enum Move {
         }
     }
 
-    // Does this move beat the other move?
+
     public boolean beats(Move other) {
-        // Java 8 style switch (no "->")
+
+
         switch (this) {
             case ROCK:
                 return other == SCISSORS;
