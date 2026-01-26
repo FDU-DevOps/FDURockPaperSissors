@@ -7,7 +7,7 @@ public enum Move {
     PAPER,
     SCISSORS;
 
-    // Turn user input text into a Move
+
     public static Move fromInput(String input) {
         if (input == null) {
             return null;
