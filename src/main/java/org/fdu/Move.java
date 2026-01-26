@@ -15,7 +15,7 @@ public enum Move {
 
         String normalized = input.trim().toLowerCase(Locale.ROOT);
 
-        // Java 8 style switch (no "->")
+
         switch (normalized) {
             case "r":
             case "rock":
@@ -44,7 +44,6 @@ public enum Move {
             case SCISSORS:
                 return other == PAPER;
             default:
-                // should never happen
                 return false;
         }
     }
