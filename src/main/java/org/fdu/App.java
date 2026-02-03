@@ -1,5 +1,7 @@
 package org.fdu;
 
+import org.fdu.Throw.RpsEnum;
+
 /**
  * A console-based implementation of the classic Rock Paper Scissors game.
  * This application allows a user to play against a computer opponent using
@@ -17,5 +19,6 @@ public class App
 {
     public static void main( String[] args ) {
         RpsUi.uiWriteMessage( "Hello World!" );
+        System.out.println(RpsEnum.getRandomThrow().name());
     }
 }
