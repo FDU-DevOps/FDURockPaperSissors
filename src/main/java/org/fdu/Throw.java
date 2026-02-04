@@ -38,7 +38,7 @@ public class Throw {
          * <p>
          * ToDo: update to enhanced Java switch avail in JDK 21 - cleaner, tighter
          *
-         * @param normalizedUserInput - user throw without leading & trailing whitespace & all lowercase
+         * @param normalizedUserInput - user throw without leading and trailing whitespace and all lowercase
          * @return - enum representing the user's throw.  If user input does not meet input rqmts, return INVALID
          */
         public static RpsEnum parseThrow(String normalizedUserInput) {
