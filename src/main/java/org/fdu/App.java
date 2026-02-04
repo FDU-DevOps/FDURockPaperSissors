@@ -19,6 +19,6 @@ public class App
 {
     public static void main( String[] args ) {
         RpsUi.uiWriteMessage( "Hello World!" );
-        System.out.println(RpsEnum.getRandomThrow().name());
+        System.out.println(Throw.getRandomThrow().name());
     }
 }

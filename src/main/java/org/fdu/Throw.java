@@ -3,7 +3,7 @@ package org.fdu;
 import java.util.Random;
 
 /**
- * Throw class - stateless, static utility to normalize, cleanup player input throws, as well as generating random npc throws.
+ * Throw class - stateless, static utility to normalize and cleanup player input, and generate random npc throws.
  * <p>
  * Scope: <br>
  *         defines enum for throws including INVALID <br>
@@ -15,54 +15,55 @@ import java.util.Random;
 public class Throw {
     /**
      * Enum reflecting the different types of throws - rock, paper or scissors <br>
-     * include value for invalid user input (returned by validation method)
+     * includes a value for invalid user input (returned by validation method)
      */
     public enum RpsEnum {
-        ROCK,
-        PAPER,
-        SCISSORS,
-        INVALID; /** entered input is invalid */
+        ROCK, PAPER, SCISSORS,
+        INVALID;      /** entered input is invalid */
+    }
 
-        /**
-         * Modify player input to remove leading and trailing whitespace, convert to all lowercase
-         * @param playerInput - raw string player input for their throw
-         * @return - updated string - all lowercase, with leading and trailing whitespace removed
-         */
-        public static String normalizeThrow(String playerInput) {
-            return playerInput.trim().toLowerCase();    // trim removes leading and trailing whitespace
+
+    /**
+     * Cleans up player input for comparison <br>
+     * Modify player input to remove leading and trailing whitespace, convert to all lowercase
+     * @param playerInput raw string which player input for their throw
+     * @return trimmed, lowercase string, or empty string if input is null
+     */
+    public static String normalizeThrow(String playerInput) {
+        // if (playerInput == null) return "";         // without this, trim would throw a null pointer exception
+        return playerInput.trim().toLowerCase();    // trim removes leading and trailing whitespace
+    }
+
+    /**
+     * Parses normalized player input into an enum representing their choice of throws <br>
+     * returns INVALID for incorrect input
+     * <p>
+     * ToDo: update to enhanced Java switch avail in JDK 21 - cleaner, tighter
+     *
+     * @param normalizedUserInput normalized user input without leading and trailing whitespace and all lowercase
+     * @return - enum representing the user's throw or INVALID
+     */
+    public static RpsEnum parseThrow(String normalizedUserInput) {
+        switch (normalizedUserInput) {
+            case "rock":
+                return RpsEnum.ROCK;
+            case "paper":
+                return RpsEnum.PAPER;
+            case "scissors":
+                return RpsEnum.SCISSORS;
+            default:
+                return RpsEnum.INVALID;
         }
+    }
 
-        /**
-         * validates the user input, and parses into an enum representing their choice of throws
-         * requires normalized user input (trimmed and without leading or training whitespace)
-         * <p>
-         * ToDo: update to enhanced Java switch avail in JDK 21 - cleaner, tighter
-         *
-         * @param normalizedUserInput - user throw without leading and trailing whitespace and all lowercase
-         * @return - enum representing the user's throw.  If user input does not meet input rqmts, return INVALID
-         */
-        public static RpsEnum parseThrow(String normalizedUserInput) {
-            switch (normalizedUserInput) {
-                case "rock":
-                    return RpsEnum.ROCK;
-                case "paper":
-                    return RpsEnum.PAPER;
-                case "scissors":
-                    return RpsEnum.SCISSORS;
-                default:
-                    return RpsEnum.INVALID;
-            }
-        }
+    private static final Random PRNG = new Random();  // statically initialize, don't reinit every time called
 
-        private static final Random PRNG = new Random();  // statically initialize, don't reinit every time called
-
-        /**
-         * randomly selects one of rock, paper or scissors and returns the associated enum
-         * @return - random throw to be associated with npc
-         */
-        public static RpsEnum getRandomThrow() {
-            RpsEnum[] allValues = RpsEnum.values();
-            return allValues[PRNG.nextInt(allValues.length-1)];  // BAD - don't include INVALID in random throws
-        }
+    /**
+     * randomly selects one of rock, paper or scissors and returns the associated enum
+     * @return - random throw to be associated with npc
+     */
+    public static RpsEnum getRandomThrow() {
+        RpsEnum[] validThrows = {RpsEnum.ROCK, RpsEnum.PAPER, RpsEnum.SCISSORS};
+        return validThrows[PRNG.nextInt(validThrows.length)];
     }
 }

@@ -22,4 +22,13 @@ public class RpsUi {
     public static void uiWriteMessage(String message) {
         System.out.println(message);
     }
+
+    /**
+     * Echos (returns) the String passed to it.
+     * Purpose: support creation of a simple test class and case for JUnit workshop
+     * @param message - String to be echoed back to the sender
+     */
+    String echo(String message) {
+        return (message);
+    }
 }
